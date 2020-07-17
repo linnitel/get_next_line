@@ -6,7 +6,7 @@
 /*   By: tisabel <tisabel@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 21:41:23 by tisabel           #+#    #+#             */
-/*   Updated: 2020/07/16 04:23:37 by tisabel          ###   ########.fr       */
+/*   Updated: 2020/07/17 01:47:04 by tisabel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,8 @@ int			get_next_line(int fd, char **line)
 	int			result;
 	int			n;
 
-	if (fd < 0 || !line)
+	if (fd < 0 || !line || !(*line = ft_strndup("", 0))
+		|| read(fd, NULL, 0) == -1 || BUFFER_SIZE <= 0)
 		return (-1);
 	n = ft_strfind(tail, '\n');
 	if (tail)
